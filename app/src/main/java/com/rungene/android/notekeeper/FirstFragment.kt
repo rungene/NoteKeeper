@@ -39,12 +39,12 @@ class FirstFragment : Fragment() {
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
         }*/
 
-        val dataManager = DataManager()
+
         val adapterCourses = context?.let {
             ArrayAdapter<CourseInfo>(
                 it,
                 R.layout.simple_spinner_dropdown_item,
-                dataManager.courses.values.toList())
+                DataManager.courses.values.toList())
         }
 
       binding.spinnerCourses.adapter =adapterCourses

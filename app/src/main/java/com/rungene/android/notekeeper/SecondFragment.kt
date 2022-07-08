@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.rungene.android.notekeeper.databinding.FragmentSecondBinding
 
 /**
@@ -31,6 +32,11 @@ class SecondFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+
+        binding.recyclerNotes.adapter = CustomAdapter(DataManager.notes)
+        binding.recyclerNotes.layoutManager = LinearLayoutManager(context)
 /*
         binding.buttonSecond.setOnClickListener {
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)

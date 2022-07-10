@@ -3,7 +3,7 @@ package com.rungene.android.notekeeper
 object DataManager {
     val courses = HashMap<String,CourseInfo>()
     val notes = ArrayList<NoteInfo>()
-
+    private var course:String?= null
     init {
         initializeCourse()
         initializeNotes()
@@ -27,7 +27,7 @@ object DataManager {
     }
     private fun initializeNotes() {
 
-        var course = courses["android_intents"]!!
+         course = courses["android_intents"].toString()
         var note = NoteInfo(course, "Dynamic intent resolution",
             "Wow, intents allow components to be resolved at runtime")
         notes.add(note)
@@ -35,7 +35,7 @@ object DataManager {
             "PendingIntents are powerful; they delegate much more than just a component invocation")
         notes.add(note)
 
-        course = courses["android_async"]!!
+        course = courses["android_async"].toString()
         note = NoteInfo(course, "Service default threads",
             "Did you know that by default an Android Service will tie up the UI thread?")
         notes.add(note)
@@ -43,7 +43,7 @@ object DataManager {
             "Foreground Services can be tied to a notification icon")
         notes.add(note)
 
-        course = courses["java_lang"]!!
+        course = courses["java_lang"].toString()
         note = NoteInfo(course, "Parameters",
             "Leverage variable-length parameter lists")
         notes.add(note)
@@ -51,7 +51,7 @@ object DataManager {
             "Anonymous classes simplify implementing one-use types")
         notes.add(note)
 
-        course = courses["java_core"]!!
+        course = courses["java_core"].toString()
         note = NoteInfo(course, "Compiler options",
             "The -jar option isn't compatible with with the -cp option")
         notes.add(note)

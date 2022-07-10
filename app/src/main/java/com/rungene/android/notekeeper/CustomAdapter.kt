@@ -42,7 +42,7 @@ class CustomAdapter(private val dataSet: ArrayList<NoteInfo>) :
         // contents of the view with that element
         viewHolder.tvTitle.text = dataSet[position].title
         viewHolder.tvText.text = dataSet[position].text
-        viewHolder.tvCourse.text = dataSet[position].course.toString()
+        viewHolder.tvCourse.text = dataSet[position].course
     }
 
     // Return the size of your dataset (invoked by the layout manager)

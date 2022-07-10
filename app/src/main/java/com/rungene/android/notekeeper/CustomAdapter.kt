@@ -15,11 +15,14 @@ class CustomAdapter(private val dataSet: ArrayList<NoteInfo>) :
      * (custom ViewHolder).
      */
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val textView: TextView
-
+        val tvCourse: TextView
+        val tvTitle: TextView
+        val tvText: TextView
         init {
             // Define click listener for the ViewHolder's View.
-            textView = view.findViewById(R.id.textView)
+            tvCourse = view.findViewById(R.id.tvCourse)
+            tvTitle = view.findViewById(R.id.tvTitle)
+            tvText = view.findViewById(R.id.tvText)
         }
     }
 

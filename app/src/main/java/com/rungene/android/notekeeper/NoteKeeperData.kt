@@ -1,9 +1,9 @@
 package com.rungene.android.notekeeper
 
-class CourseInfo(val courseId:String,val title:String) {
+class CourseInfo(val courseId:String,val title:String?=null) {
     override fun toString(): String {
-        return title
+        return title.toString()
     }
 }
 
-data class NoteInfo(var course:CourseInfo,var title:String,var text:String)
+data class NoteInfo(var course:String?,var title:String,var text:String)

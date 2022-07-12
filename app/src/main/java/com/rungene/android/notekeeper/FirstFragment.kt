@@ -3,6 +3,7 @@ package com.rungene.android.notekeeper
 import android.R
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -48,6 +49,12 @@ class FirstFragment : Fragment() {
         }
 
       binding.spinnerCourses.adapter =adapterCourses
+
+        val bundle = arguments
+        if (bundle == null) {
+            Log.e("Confirmation", "ConfirmationFragment did not receive traveler information")
+            return
+        }
 
     }
 

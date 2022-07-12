@@ -27,7 +27,7 @@ object DataManager {
     }
     private fun initializeNotes() {
 
-         course = courses["android_intents"].toString()
+         course = courses["android_intent"].toString()
         var note = NoteInfo(course, "Dynamic intent resolution",
             "Wow, intents allow components to be resolved at runtime")
         notes.add(note)
@@ -35,7 +35,7 @@ object DataManager {
             "PendingIntents are powerful; they delegate much more than just a component invocation")
         notes.add(note)
 
-        course = courses["android_async"].toString()
+        course = courses["android_sync"].toString()
         note = NoteInfo(course, "Service default threads",
             "Did you know that by default an Android Service will tie up the UI thread?")
         notes.add(note)

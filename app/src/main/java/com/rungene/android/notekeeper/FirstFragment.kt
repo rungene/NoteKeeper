@@ -52,9 +52,17 @@ class FirstFragment : Fragment() {
 
         val bundle = arguments
         if (bundle == null) {
-            Log.e("Confirmation", "ConfirmationFragment did not receive traveler information")
+            Log.e("Confirmation", "FirstFragment did not receive data information")
             return
         }
+
+        // Retrieve passed arguments and display them
+        val args = FirstFragmentArgs.fromBundle(bundle)
+        showDataInfo(args.dataInfo)
+        
+    }
+
+    private fun showDataInfo(dataInfo: NoteInfo) {
 
     }
 

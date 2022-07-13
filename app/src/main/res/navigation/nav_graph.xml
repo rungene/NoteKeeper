@@ -17,6 +17,10 @@
         <argument
             android:name="dataInfo"
             app:argType="com.rungene.android.notekeeper.NoteInfo" />
+        <argument
+            android:name="position"
+            app:argType="integer"
+            android:defaultValue="1" />
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"

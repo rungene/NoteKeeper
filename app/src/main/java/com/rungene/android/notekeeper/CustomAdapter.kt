@@ -16,6 +16,10 @@ class CustomAdapter(private val dataSet: ArrayList<NoteInfo>) :
         fun onItemClick(position: Int)
     }
 
+    fun setOnItemClickListener(listener:OnItemClickListener){
+
+    }
+
     /**
      * Provide a reference to the type of views that you are using
      * (custom ViewHolder).

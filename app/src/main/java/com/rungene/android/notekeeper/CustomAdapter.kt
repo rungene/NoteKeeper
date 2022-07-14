@@ -3,14 +3,15 @@ package com.rungene.android.notekeeper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class CustomAdapter(private val dataSet: ArrayList<NoteInfo>) :
     RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
 
-    interface onItemClickListener{
+    private lateinit var mListener:OnItemClickListener
+
+    interface OnItemClickListener{
 
         fun onItemClick(position: Int)
     }

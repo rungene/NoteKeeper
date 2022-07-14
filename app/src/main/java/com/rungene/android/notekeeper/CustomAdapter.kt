@@ -25,7 +25,7 @@ class CustomAdapter(private val dataSet: ArrayList<NoteInfo>) :
      * Provide a reference to the type of views that you are using
      * (custom ViewHolder).
      */
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(view: View,listener: OnItemClickListener) : RecyclerView.ViewHolder(view) {
         val tvCourse: TextView
         val tvTitle: TextView
         val tvText: TextView

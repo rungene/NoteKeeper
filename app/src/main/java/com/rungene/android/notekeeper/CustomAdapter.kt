@@ -34,6 +34,9 @@ class CustomAdapter(private val dataSet: ArrayList<NoteInfo>) :
             tvCourse = view.findViewById(R.id.tvCourse)
             tvTitle = view.findViewById(R.id.tvTitle)
             tvText = view.findViewById(R.id.tvText)
+            view.setOnClickListener {
+                listener.onItemClick(adapterPosition)
+            }
         }
     }
 

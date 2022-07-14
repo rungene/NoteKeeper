@@ -10,6 +10,11 @@ import androidx.recyclerview.widget.RecyclerView
 class CustomAdapter(private val dataSet: ArrayList<NoteInfo>) :
     RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
 
+    interface onItemClickListener{
+
+        fun onItemClick(position: Int)
+    }
+
     /**
      * Provide a reference to the type of views that you are using
      * (custom ViewHolder).

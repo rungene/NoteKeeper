@@ -37,6 +37,12 @@ class SecondFragment : Fragment() {
         val adapter =CustomAdapter(DataManager.notes)
        recyclerNotes.adapter = adapter
       recyclerNotes.layoutManager = LinearLayoutManager(context)
+        adapter.setOnItemClickListener(object : CustomAdapter.OnItemClickListener{
+            override fun onItemClick(position: Int) {
+                TODO("Not yet implemented")
+            }
+
+        })
 
 /*
         binding.buttonSecond.setOnClickListener {

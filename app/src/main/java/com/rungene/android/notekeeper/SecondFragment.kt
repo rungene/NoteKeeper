@@ -33,10 +33,11 @@ class SecondFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val recyclerNotes = binding.recyclerNotes
+        val adapter =CustomAdapter(DataManager.notes)
+       recyclerNotes.adapter = adapter
+      recyclerNotes.layoutManager = LinearLayoutManager(context)
 
-
-        binding.recyclerNotes.adapter = CustomAdapter(DataManager.notes)
-        binding.recyclerNotes.layoutManager = LinearLayoutManager(context)
 /*
         binding.buttonSecond.setOnClickListener {
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)

@@ -18,6 +18,7 @@ class CustomAdapter(private val dataSet: ArrayList<NoteInfo>) :
 
     fun setOnItemClickListener(listener:OnItemClickListener){
 
+        mListener = listener
     }
 
     /**

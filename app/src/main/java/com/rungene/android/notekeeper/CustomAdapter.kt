@@ -46,7 +46,7 @@ class CustomAdapter(private val dataSet: ArrayList<NoteInfo>) :
         val view = LayoutInflater.from(viewGroup.context)
             .inflate(R.layout.recyclerview_item, viewGroup, false)
 
-        return ViewHolder(view)
+        return ViewHolder(view,mListener)
     }
 
     // Replace the contents of a view (invoked by the layout manager)

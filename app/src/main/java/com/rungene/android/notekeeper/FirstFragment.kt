@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.rungene.android.notekeeper.databinding.FragmentFirstBinding
 
 /**
@@ -18,6 +19,9 @@ import com.rungene.android.notekeeper.databinding.FragmentFirstBinding
 class FirstFragment : Fragment() {
 
     private var _binding: FragmentFirstBinding? = null
+   // var notePosition : Int = 0
+    private val args:FirstFragmentArgs by navArgs()
+    private lateinit var noteInfo: NoteInfo
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -29,6 +33,7 @@ class FirstFragment : Fragment() {
     ): View? {
 
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
+        noteInfo = args.dataInfo
         return binding.root
 
     }
@@ -50,21 +55,32 @@ class FirstFragment : Fragment() {
 
       binding.spinnerCourses.adapter =adapterCourses
 
-        val bundle = arguments
+     /*   val bundle = arguments
         if (bundle == null) {
             Log.e("Confirmation", "FirstFragment did not receive data information")
             return
-        }
+        }*/
 
-        // Retrieve passed arguments and display them
+        binding.noteTitle.setText(noteInfo.title)
+        binding.noteText.setText(noteInfo.text)
+      //  noteInfo.course?.let { binding.spinnerCourses.setSelection(it.toInt()) }
+
+  /*      // Retrieve passed arguments and display them
         val args = FirstFragmentArgs.fromBundle(bundle)
-        showDataInfo(args.dataInfo)
+     //   showDataInfo(args.dataInfo)*/
+
+
         
     }
 
-    private fun showDataInfo(dataInfo: NoteInfo) {
+/*    private fun showDataInfo(dataInfo: NoteInfo) {
+        val note = DataManager.notes[notePosition]
+         binding.noteTitle.setText(dataInfo.title)
+        binding.noteText.setText(dataInfo.text)
 
-    }
+        val currentPosition = DataManager.courses.values.indexOf(note.course)
+        binding.spinnerCourses.setSelection(currentPosition)
+    }*/
 
     override fun onDestroyView() {
         super.onDestroyView()

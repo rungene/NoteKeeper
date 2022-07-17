@@ -41,10 +41,6 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-       /* binding.buttonFirst.setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
-        }*/
-
 
         val adapterCourses = context?.let {
             ArrayAdapter<CourseInfo>(
@@ -55,32 +51,11 @@ class FirstFragment : Fragment() {
 
       binding.spinnerCourses.adapter =adapterCourses
 
-     /*   val bundle = arguments
-        if (bundle == null) {
-            Log.e("Confirmation", "FirstFragment did not receive data information")
-            return
-        }*/
-
         binding.noteTitle.setText(noteInfo.title)
         binding.noteText.setText(noteInfo.text)
-      //  noteInfo.course?.let { binding.spinnerCourses.setSelection(it.toInt()) }
 
-  /*      // Retrieve passed arguments and display them
-        val args = FirstFragmentArgs.fromBundle(bundle)
-     //   showDataInfo(args.dataInfo)*/
-
-
-        
     }
 
-/*    private fun showDataInfo(dataInfo: NoteInfo) {
-        val note = DataManager.notes[notePosition]
-         binding.noteTitle.setText(dataInfo.title)
-        binding.noteText.setText(dataInfo.text)
-
-        val currentPosition = DataManager.courses.values.indexOf(note.course)
-        binding.spinnerCourses.setSelection(currentPosition)
-    }*/
 
     override fun onDestroyView() {
         super.onDestroyView()

@@ -13,4 +13,5 @@
     <string name="note_title">Add Title</string>
     <string name="note_text">Add note text</string>
     <string name="fab_content_description">Add Notes</string>
+
 </resources>

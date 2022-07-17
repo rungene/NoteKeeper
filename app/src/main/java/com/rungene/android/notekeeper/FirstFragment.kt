@@ -18,6 +18,10 @@ import com.rungene.android.notekeeper.databinding.FragmentFirstBinding
  */
 class FirstFragment : Fragment() {
 
+    val courses:List<CourseInfo> by lazy {
+        DataManager.courses.values.toList()
+    }
+
     private var _binding: FragmentFirstBinding? = null
    // var notePosition : Int = 0
     private val args:FirstFragmentArgs by navArgs()
@@ -46,7 +50,8 @@ class FirstFragment : Fragment() {
             ArrayAdapter<CourseInfo>(
                 it,
                 R.layout.simple_spinner_dropdown_item,
-                DataManager.courses.values.toList())
+                courses
+              )
         }
 
       binding.spinnerCourses.adapter =adapterCourses

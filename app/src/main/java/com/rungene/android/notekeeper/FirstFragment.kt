@@ -1,16 +1,13 @@
 package com.rungene.android.notekeeper
 
 import android.R
-import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.rungene.android.notekeeper.databinding.FragmentFirstBinding
 
@@ -58,7 +55,7 @@ class FirstFragment : Fragment() {
         var index : Int ? = null
         var i = 0
         for (course:CourseInfo in courses){
-            if (noteInfo.course == course.title){
+            if (noteInfo.courseTitle == course.title){
                 index=i
                 break
             }

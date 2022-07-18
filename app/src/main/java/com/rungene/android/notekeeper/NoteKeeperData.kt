@@ -9,4 +9,4 @@ data class CourseInfo(val courseId:String,val title:String) {
     }
 }
 @Parcelize
-data class NoteInfo(var course:String?,var title:String,var text:String): Parcelable
+data class NoteInfo(var courseTitle:String?, var title:String, var text:String): Parcelable

@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.navigation.fragment.navArgs
+import com.rungene.android.notekeeper.data.CourseInfo
+import com.rungene.android.notekeeper.data.NoteInfo
 import com.rungene.android.notekeeper.databinding.FragmentFirstBinding
 
 /**
@@ -54,7 +56,7 @@ class FirstFragment : Fragment() {
 
         var index : Int ? = null
         var i = 0
-        for (course:CourseInfo in courses){
+        for (course: CourseInfo in courses){
             if (noteInfo.courseTitle == course.title){
                 index=i
                 break

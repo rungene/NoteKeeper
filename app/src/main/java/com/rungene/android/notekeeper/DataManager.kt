@@ -1,7 +1,10 @@
 package com.rungene.android.notekeeper
 
+import com.rungene.android.notekeeper.data.CourseInfo
+import com.rungene.android.notekeeper.data.NoteInfo
+
 object DataManager {
-    val courses = HashMap<String,CourseInfo>()
+    val courses = HashMap<String, CourseInfo>()
     val notes = ArrayList<NoteInfo>()
     private var course:String?= null
     init {

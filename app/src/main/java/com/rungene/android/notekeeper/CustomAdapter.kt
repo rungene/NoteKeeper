@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.rungene.android.notekeeper.data.NoteInfo
 
 class CustomAdapter(private val dataSet: ArrayList<NoteInfo>) :
     RecyclerView.Adapter<CustomAdapter.ViewHolder>() {

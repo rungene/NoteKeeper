@@ -3,9 +3,9 @@ package com.rungene.android.notekeeper
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
-data class CourseInfo(val courseId:String,val title:String?=null) {
+data class CourseInfo(val courseId:String,val title:String) {
     override fun toString(): String {
-        return title.toString()
+        return title
     }
 }
 @Parcelize

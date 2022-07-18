@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.rungene.android.notekeeper.databinding.FragmentFirstBinding
@@ -54,7 +55,24 @@ class FirstFragment : Fragment() {
               )
         }
 
-      binding.spinnerCourses.adapter =adapterCourses
+        var index : Int ? = null
+        var i = 0
+        for (course:CourseInfo in courses){
+            if (noteInfo.course == course.title){
+                index=i
+                break
+            }
+            i++
+        }
+        binding.spinnerCourses.adapter =adapterCourses
+        if (index==null){
+           Toast.makeText(context,"Selected note is not attached to a course",Toast.LENGTH_SHORT)
+               .show()
+        }else{
+            binding.spinnerCourses.setSelection(index)
+        }
+
+
 
         binding.noteTitle.setText(noteInfo.title)
         binding.noteText.setText(noteInfo.text)

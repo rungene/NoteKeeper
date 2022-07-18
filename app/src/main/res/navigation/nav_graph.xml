@@ -16,7 +16,7 @@
             app:destination="@id/SecondFragment" />
         <argument
             android:name="dataInfo"
-            app:argType="com.rungene.android.notekeeper.NoteInfo" />
+            app:argType="com.rungene.android.notekeeper.data.NoteInfo" />
 
     </fragment>
     <fragment

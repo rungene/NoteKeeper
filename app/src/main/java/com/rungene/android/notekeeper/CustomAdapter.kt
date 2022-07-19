@@ -8,7 +8,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.rungene.android.notekeeper.data.NoteInfo
 
-class CustomAdapter(private val dataSet: ArrayList<NoteInfo>) :
+class CustomAdapter(private val dataSet: List<NoteInfo>) :
     RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
 
 

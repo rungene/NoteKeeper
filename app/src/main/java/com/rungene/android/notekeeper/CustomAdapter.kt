@@ -52,7 +52,7 @@ class CustomAdapter(private val dataSet: List<NoteInfo>) :
         // contents of the view with that element
         viewHolder.tvTitle.text = dataSet[position].title
         viewHolder.tvText.text = dataSet[position].text
-        viewHolder.tvCourse.text = dataSet[position].courseTitle
+        viewHolder.tvCourse.text = dataSet[position].courseTitle.toString()
         viewHolder.noteInfo=dataSet[position]
     }
 

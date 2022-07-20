@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+/*
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_main, menu)
@@ -52,10 +53,11 @@ class MainActivity : AppCompatActivity() {
             else -> super.onOptionsItemSelected(item)
         }
     }
+*/
 
-    private fun moveNext() {
-        TODO("Not yet implemented")
-    }
+/*    private fun moveNext() {
+
+    }*/
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)

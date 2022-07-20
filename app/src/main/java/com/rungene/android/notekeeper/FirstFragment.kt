@@ -2,10 +2,8 @@ package com.rungene.android.notekeeper
 
 import android.R
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.navigation.fragment.navArgs
@@ -17,7 +15,7 @@ import com.rungene.android.notekeeper.databinding.FragmentFirstBinding
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
 class FirstFragment : Fragment() {
-
+    var i = 0
     val courses:List<CourseInfo> by lazy {
         DataManager.courses.values.toList()
     }
@@ -38,6 +36,7 @@ class FirstFragment : Fragment() {
 
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
         noteInfo = args.dataInfo
+        setHasOptionsMenu(true)
         return binding.root
 
     }
@@ -53,29 +52,55 @@ class FirstFragment : Fragment() {
                 courses
               )
         }
+        binding.spinnerCourses.adapter =adapterCourses
+        displayNote()
 
-        var index : Int ? = null
-        var i = 0
-        for (course: CourseInfo in courses){
-            if (noteInfo.courseTitle == course.title){
-                index=i
+    }
+
+    private fun displayNote() {
+        var index: Int? = null
+
+        for (course: CourseInfo in courses) {
+            if (noteInfo.courseTitle.toString() == course.title) {
+                index = i
                 break
             }
             i++
         }
-        binding.spinnerCourses.adapter =adapterCourses
-        if (index==null){
-           Toast.makeText(context,"Selected note is not attached to a course",Toast.LENGTH_SHORT)
-               .show()
-        }else{
+
+        if (index == null) {
+            Toast.makeText(context, "Selected note is not attached to a course", Toast.LENGTH_SHORT)
+                .show()
+        } else {
             binding.spinnerCourses.setSelection(index)
         }
 
-
-
         binding.noteTitle.setText(noteInfo.title)
         binding.noteText.setText(noteInfo.text)
+    }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater:MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(com.rungene.android.notekeeper.R.menu.menu_main, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        return when (item.itemId) {
+            com.rungene.android.notekeeper.R.id.action_settings -> true
+            com.rungene.android.notekeeper.R.id.action_next -> {
+                moveNext()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun moveNext() {
+       ++i
+ displayNote()
     }
 
 

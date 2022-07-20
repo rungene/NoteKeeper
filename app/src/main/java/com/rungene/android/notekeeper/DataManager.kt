@@ -24,38 +24,78 @@ object DataManager {
     }
     val notes : MutableList<NoteInfo> by lazy {
         mutableListOf<NoteInfo>().also { notes ->
-           var course = courses["android_intent"].toString()
-            var note = NoteInfo(course, "Dynamic intent resolution",
-                "Wow, intents allow components to be resolved at runtime")
+           var course = courses["android_intent"]
+            var note = course?.let {
+                NoteInfo(
+                    it, "Dynamic intent resolution",
+                    "Wow, intents allow components to be resolved at runtime")
+            }
 
-            notes.add(note)
-            note = NoteInfo(course, "Delegating intents",
-                "PendingIntents are powerful; they delegate much more than just a component invocation")
-             notes.add(note)
+            if (note != null) {
+                notes.add(note)
+            }
+            note = course?.let {
+                NoteInfo(
+                    it, "Delegating intents",
+                    "PendingIntents are powerful; they delegate much more than just a component invocation")
+            }
+            if (note != null) {
+                notes.add(note)
+            }
 
-            course = courses["android_sync"].toString()
-            note = NoteInfo(course, "Service default threads",
-                "Did you know that by default an Android Service will tie up the UI thread?")
-            notes.add(note)
-            note = NoteInfo(course, "Long running operations",
-                "Foreground Services can be tied to a notification icon")
-            notes.add(note)
+            course = courses["android_sync"]
+            note = course?.let {
+                NoteInfo(
+                    it, "Service default threads",
+                    "Did you know that by default an Android Service will tie up the UI thread?")
+            }
+            if (note != null) {
+                notes.add(note)
+            }
+            note = course?.let {
+                NoteInfo(
+                    it, "Long running operations",
+                    "Foreground Services can be tied to a notification icon")
+            }
+            if (note != null) {
+                notes.add(note)
+            }
 
-            course = courses["java_lang"].toString()
-            note = NoteInfo(course, "Parameters",
-                "Leverage variable-length parameter lists")
-            notes.add(note)
-            note = NoteInfo(course, "Anonymous classes",
-                "Anonymous classes simplify implementing one-use types")
-            notes.add(note)
+            course = courses["java_lang"]
+            note = course?.let {
+                NoteInfo(
+                    it, "Parameters",
+                    "Leverage variable-length parameter lists")
+            }
+            if (note != null) {
+                notes.add(note)
+            }
+            note = course?.let {
+                NoteInfo(
+                    it, "Anonymous classes",
+                    "Anonymous classes simplify implementing one-use types")
+            }
+            if (note != null) {
+                notes.add(note)
+            }
 
-            course = courses["java_core"].toString()
-            note = NoteInfo(course, "Compiler options",
-                "The -jar option isn't compatible with with the -cp option")
-            notes.add(note)
-            note = NoteInfo(course, "Serialization",
-                "Remember to include SerialVersionUID to assure version compatibility")
-            notes.add(note)
+            course = courses["java_core"]
+            note = course?.let {
+                NoteInfo(
+                    it, "Compiler options",
+                    "The -jar option isn't compatible with with the -cp option")
+            }
+            if (note != null) {
+                notes.add(note)
+            }
+            note = course?.let {
+                NoteInfo(
+                    it, "Serialization",
+                    "Remember to include SerialVersionUID to assure version compatibility")
+            }
+            if (note != null) {
+                notes.add(note)
+            }
 
         }
     }

@@ -9,6 +9,7 @@
         app:showAsAction="never" />
     <item
         android:id="@+id/action_next"
+        android:icon="@drawable/ic_baseline_forward_24"
         android:title="@string/next"
         app:showAsAction="ifRoom" />
 </menu>

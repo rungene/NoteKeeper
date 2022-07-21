@@ -9,5 +9,6 @@
         app:showAsAction="never" />
     <item
         android:id="@+id/action_next"
-        android:title="@string/next" />
+        android:title="@string/next"
+        app:showAsAction="ifRoom" />
 </menu>

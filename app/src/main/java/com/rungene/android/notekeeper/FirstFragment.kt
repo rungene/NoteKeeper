@@ -6,6 +6,9 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.getDrawable
 import androidx.navigation.fragment.navArgs
 import com.rungene.android.notekeeper.data.CourseInfo
 import com.rungene.android.notekeeper.data.NoteInfo
@@ -101,9 +104,20 @@ class FirstFragment : Fragment() {
     private fun moveNext() {
        ++i
  displayNote()
+    requireActivity().invalidateOptionsMenu()
     }
 
     override fun onPrepareOptionsMenu(menu: Menu) {
+        if(i >= courses.lastIndex){
+            val menuItem =menu.findItem(com.rungene.android.notekeeper.R.id.action_next)
+            if (menuItem != null){
+                menuItem.icon = context?.let { getDrawable(it,com.rungene.android.notekeeper
+                    .R.drawable.ic_baseline_block_24) }
+                menuItem.isEnabled = false
+            }
+
+        }
+
         super.onPrepareOptionsMenu(menu)
     }
 

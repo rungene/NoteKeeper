@@ -103,6 +103,10 @@ class FirstFragment : Fragment() {
  displayNote()
     }
 
+    override fun onPrepareOptionsMenu(menu: Menu) {
+        super.onPrepareOptionsMenu(menu)
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

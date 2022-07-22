@@ -121,6 +121,19 @@ class FirstFragment : Fragment() {
         super.onPrepareOptionsMenu(menu)
     }
 
+    override fun onPause() {
+        super.onPause()
+        saveNote()
+    }
+
+    private fun saveNote() {
+        val note = DataManager.notes[i]
+        note.title = binding.noteTitle.text.toString()
+        note.text = binding.noteText.text.toString()
+        note.courseTitle = binding.spinnerCourses.selectedItem as CourseInfo
+
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

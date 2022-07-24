@@ -90,8 +90,9 @@ class SecondFragment : Fragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater:MenuInflater) {
+        inflater.inflate(com.rungene.android.notekeeper.R.menu.menu_second_fragment, menu)
         super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(com.rungene.android.notekeeper.R.menu.menu_main, menu)
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

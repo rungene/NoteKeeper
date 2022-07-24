@@ -13,6 +13,7 @@ import androidx.navigation.fragment.navArgs
 import com.rungene.android.notekeeper.data.CourseInfo
 import com.rungene.android.notekeeper.data.NoteInfo
 import com.rungene.android.notekeeper.databinding.FragmentFirstBinding
+import com.rungene.android.notekeeper.databinding.FragmentSecondBinding
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -23,7 +24,7 @@ class SecondFragment : Fragment() {
         DataManager.courses.values.toList()
     }
 
-    private var _binding: FragmentFirstBinding? = null
+    private var _binding: FragmentSecondBinding? = null
    // var notePosition : Int = 0
     private val args:FirstFragmentArgs by navArgs()
     private lateinit var noteInfo: NoteInfo
@@ -37,7 +38,7 @@ class SecondFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = FragmentFirstBinding.inflate(inflater, container, false)
+        _binding = FragmentSecondBinding.inflate(inflater, container, false)
         noteInfo = args.dataInfo
         setHasOptionsMenu(true)
         return binding.root
@@ -55,6 +56,7 @@ class SecondFragment : Fragment() {
                 courses
               )
         }
+
         binding.spinnerCourses.adapter =adapterCourses
         displayNote()
 

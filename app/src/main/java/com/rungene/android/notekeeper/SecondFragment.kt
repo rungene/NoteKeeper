@@ -50,21 +50,21 @@ class SecondFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        displayNote()
+
+    }
+
+    private fun displayNote() {
 
         val adapterCourses = context?.let {
             ArrayAdapter<CourseInfo>(
                 it,
                 R.layout.simple_spinner_dropdown_item,
                 courses
-              )
+            )
         }
 
         binding.spinnerCourses.adapter =adapterCourses
-        displayNote()
-
-    }
-
-    private fun displayNote() {
         var index: Int? = null
 
         for (course: CourseInfo in courses) {
@@ -111,28 +111,18 @@ class SecondFragment : Fragment() {
     }
 
     private fun previousNote() {
-
+        --currentNoteId
+        if (currentNoteId<0) currentNoteId=DataManager.notes.size-1
+        noteInfo =currentNote
+        displayNote()
     }
 
 
     private fun nextNote() {
-       ++i
- displayNote()
-    requireActivity().invalidateOptionsMenu()
-    }
-
-    override fun onPrepareOptionsMenu(menu: Menu) {
-        if(i >= courses.lastIndex){
-            val menuItem =menu.findItem(com.rungene.android.notekeeper.R.id.action_next)
-            if (menuItem != null){
-                menuItem.icon = context?.let { getDrawable(it,com.rungene.android.notekeeper
-                    .R.drawable.ic_baseline_block_24) }
-                menuItem.isEnabled = false
-            }
-
-        }
-
-        super.onPrepareOptionsMenu(menu)
+       ++currentNoteId
+        if (currentNoteId>=DataManager.notes.size) currentNoteId=0
+        noteInfo = currentNote
+        displayNote()
     }
 
     override fun onPause() {

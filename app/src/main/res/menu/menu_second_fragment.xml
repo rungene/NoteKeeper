@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.rungene.android.notekeeper.MainActivity">
     <item
-        android:id="@+id/previous"
+        android:id="@+id/action_previous"
         android:orderInCategory="100"
         android:icon="@drawable/ic_baseline_arrow_back_24"
         android:title="@string/previous"

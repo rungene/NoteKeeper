@@ -1,20 +1,32 @@
 package com.rungene.android.notekeeper
 
+import android.R
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.rungene.android.notekeeper.databinding.FragmentSecondBinding
+import android.widget.ArrayAdapter
+import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.getDrawable
+import androidx.navigation.fragment.navArgs
+import com.rungene.android.notekeeper.data.CourseInfo
+import com.rungene.android.notekeeper.data.NoteInfo
+import com.rungene.android.notekeeper.databinding.FragmentFirstBinding
 
 /**
- * A simple [Fragment] subclass as the second destination in the navigation.
+ * A simple [Fragment] subclass as the default destination in the navigation.
  */
 class SecondFragment : Fragment() {
+    var i = 0
+    val courses:List<CourseInfo> by lazy {
+        DataManager.courses.values.toList()
+    }
 
-    private var _binding: FragmentSecondBinding? = null
+    private var _binding: FragmentFirstBinding? = null
+   // var notePosition : Int = 0
+    private val args:FirstFragmentArgs by navArgs()
+    private lateinit var noteInfo: NoteInfo
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -25,7 +37,9 @@ class SecondFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = FragmentSecondBinding.inflate(inflater, container, false)
+        _binding = FragmentFirstBinding.inflate(inflater, container, false)
+        noteInfo = args.dataInfo
+        setHasOptionsMenu(true)
         return binding.root
 
     }
@@ -33,16 +47,91 @@ class SecondFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val recyclerNotes = binding.recyclerNotes
-        val adapter =CustomAdapter(DataManager.notes)
-       recyclerNotes.adapter = adapter
-      recyclerNotes.layoutManager = LinearLayoutManager(context)
 
+        val adapterCourses = context?.let {
+            ArrayAdapter<CourseInfo>(
+                it,
+                R.layout.simple_spinner_dropdown_item,
+                courses
+              )
+        }
+        binding.spinnerCourses.adapter =adapterCourses
+        displayNote()
 
-/*
-        binding.buttonSecond.setOnClickListener {
-            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
-        }*/
+    }
+
+    private fun displayNote() {
+        var index: Int? = null
+
+        for (course: CourseInfo in courses) {
+            if (noteInfo.courseTitle.toString() == course.title) {
+                index = i
+                break
+            }
+            i++
+        }
+
+        if (index == null) {
+            Toast.makeText(context, "Selected note is not attached to a course", Toast.LENGTH_SHORT)
+                .show()
+        } else {
+            binding.spinnerCourses.setSelection(index)
+        }
+
+        binding.noteTitle.setText(noteInfo.title)
+        binding.noteText.setText(noteInfo.text)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater:MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(com.rungene.android.notekeeper.R.menu.menu_main, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        return when (item.itemId) {
+            com.rungene.android.notekeeper.R.id.action_settings -> true
+            com.rungene.android.notekeeper.R.id.action_next -> {
+                moveNext()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun moveNext() {
+       ++i
+ displayNote()
+    requireActivity().invalidateOptionsMenu()
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu) {
+        if(i >= courses.lastIndex){
+            val menuItem =menu.findItem(com.rungene.android.notekeeper.R.id.action_next)
+            if (menuItem != null){
+                menuItem.icon = context?.let { getDrawable(it,com.rungene.android.notekeeper
+                    .R.drawable.ic_baseline_block_24) }
+                menuItem.isEnabled = false
+            }
+
+        }
+
+        super.onPrepareOptionsMenu(menu)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        saveNote()
+    }
+
+    private fun saveNote() {
+        val note = DataManager.notes[i]
+        note.title = binding.noteTitle.text.toString()
+        note.text = binding.noteText.text.toString()
+        note.courseTitle = binding.spinnerCourses.selectedItem as CourseInfo
+
     }
 
 

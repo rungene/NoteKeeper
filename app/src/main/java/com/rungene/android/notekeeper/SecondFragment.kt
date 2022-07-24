@@ -6,13 +6,10 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.ArrayAdapter
 import android.widget.Toast
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.getDrawable
 import androidx.navigation.fragment.navArgs
 import com.rungene.android.notekeeper.data.CourseInfo
 import com.rungene.android.notekeeper.data.NoteInfo
-import com.rungene.android.notekeeper.databinding.FragmentFirstBinding
 import com.rungene.android.notekeeper.databinding.FragmentSecondBinding
 
 /**
@@ -100,16 +97,25 @@ class SecondFragment : Fragment() {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
-            com.rungene.android.notekeeper.R.id.action_settings -> true
+            com.rungene.android.notekeeper.R.id.action_previous -> {
+                previousNote()
+                true
+            }
+
             com.rungene.android.notekeeper.R.id.action_next -> {
-                moveNext()
+                nextNote()
                 true
             }
             else -> super.onOptionsItemSelected(item)
         }
     }
 
-    private fun moveNext() {
+    private fun previousNote() {
+
+    }
+
+
+    private fun nextNote() {
        ++i
  displayNote()
     requireActivity().invalidateOptionsMenu()

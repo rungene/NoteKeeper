@@ -21,6 +21,7 @@ class CustomAdapter(private val dataSet: List<NoteInfo>) :
         val tvCourse: TextView
         val tvTitle: TextView
         val tvText: TextView
+        val id : Int =0
         init {
             // Define click listener for the ViewHolder's View.
             tvCourse = view.findViewById(R.id.tvCourse)
@@ -28,7 +29,7 @@ class CustomAdapter(private val dataSet: List<NoteInfo>) :
             tvText = view.findViewById(R.id.tvText)
             view.setOnClickListener {
                noteInfo?.let {
-                   val directions = FirstFragmentDirections.actionSecondFragmentToFirstFragment(it)
+                   val directions = FirstFragmentDirections.actionSecondFragmentToFirstFragment(id)
                    view.findNavController().navigate(directions)
                }
             }

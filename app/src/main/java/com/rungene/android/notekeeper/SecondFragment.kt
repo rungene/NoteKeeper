@@ -23,11 +23,15 @@ class SecondFragment : Fragment() {
     val courses:List<CourseInfo> by lazy {
         DataManager.courses.values.toList()
     }
+    var currentNoteId = 0
 
     private var _binding: FragmentSecondBinding? = null
    // var notePosition : Int = 0
     private val args:FirstFragmentArgs by navArgs()
     private lateinit var noteInfo: NoteInfo
+
+    val currentNote
+    get() = DataManager.notes[currentNoteId]
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -39,7 +43,8 @@ class SecondFragment : Fragment() {
     ): View? {
 
         _binding = FragmentSecondBinding.inflate(inflater, container, false)
-        noteInfo = args.dataInfo
+        currentNoteId = args.dataInfo
+        noteInfo = currentNote
         setHasOptionsMenu(true)
         return binding.root
 

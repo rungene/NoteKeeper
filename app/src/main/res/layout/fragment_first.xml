@@ -4,48 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SecondFragment">
-
-    <EditText
-        android:id="@+id/noteText"
+    tools:context=".FirstFragment">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerNotes"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:hint="@string/note_text"
-        android:inputType="textMultiLine"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="@+id/spinnerCourses"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/spinnerCourses"
-        app:layout_constraintTop_toBottomOf="@+id/noteTitle" />
-
-    <Spinner
-        android:id="@+id/spinnerCourses"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:minHeight="48dp"
-        android:contentDescription="@string/spinner_description"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/noteTitle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textMultiLine"
-        android:minHeight="48dp"
-        android:hint="@string/note_title"
-        app:layout_constraintEnd_toEndOf="@+id/spinnerCourses"
-        app:layout_constraintStart_toStartOf="@+id/spinnerCourses"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerCourses" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

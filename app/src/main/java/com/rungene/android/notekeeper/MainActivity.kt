@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
 
         binding.fab.setOnClickListener {
-            navController.navigate(R.id.action_SecondFragment_to_FirstFragment,null)
+            navController.navigate(R.id.action_FirstFragment_to_SecondFragment,null)
         }
     }
 

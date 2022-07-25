@@ -24,7 +24,7 @@ class SecondFragment : Fragment() {
 
     private var _binding: FragmentSecondBinding? = null
    // var notePosition : Int = 0
-    private val args:FirstFragmentArgs by navArgs()
+    private val args:SecondFragmentArgs by navArgs()
     private lateinit var noteInfo: NoteInfo
 
     val currentNote

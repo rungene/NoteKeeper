@@ -16,7 +16,7 @@ import com.rungene.android.notekeeper.databinding.FragmentSecondBinding
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
 class SecondFragment : Fragment() {
-    var i = 0
+
     val courses:List<CourseInfo> by lazy {
         DataManager.courses.values.toList()
     }
@@ -55,7 +55,7 @@ class SecondFragment : Fragment() {
     }
 
     private fun displayNote() {
-
+        var i = 0
         val adapterCourses = context?.let {
             ArrayAdapter<CourseInfo>(
                 it,
@@ -131,7 +131,7 @@ class SecondFragment : Fragment() {
     }
 
     private fun saveNote() {
-        val note = DataManager.notes[i]
+        val note = DataManager.notes[currentNoteId]
         note.title = binding.noteTitle.text.toString()
         note.text = binding.noteText.text.toString()
         note.courseTitle = binding.spinnerCourses.selectedItem as CourseInfo

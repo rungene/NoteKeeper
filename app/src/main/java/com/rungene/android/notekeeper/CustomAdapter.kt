@@ -29,7 +29,7 @@ class CustomAdapter(private val dataSet: List<NoteInfo>) :
             tvText = view.findViewById(R.id.tvText)
             view.setOnClickListener {
                noteInfo?.let {
-                   val directions = FirstFragmentDirections.actionSecondFragmentToFirstFragment(id)
+                   val directions = FirstFragmentDirections.actionFirstFragmentToSecondFragment(id)
                    view.findNavController().navigate(directions)
                }
             }

@@ -40,7 +40,10 @@ class SecondFragment : Fragment() {
     ): View? {
 
         _binding = FragmentSecondBinding.inflate(inflater, container, false)
-        currentNoteId = args.dataInfo
+
+        if(args.dataInfo >0) {
+            currentNoteId = args.dataInfo
+        }
         noteInfo = currentNote
         setHasOptionsMenu(true)
         return binding.root

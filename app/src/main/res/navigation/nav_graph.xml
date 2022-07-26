@@ -14,9 +14,7 @@
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
             app:destination="@id/SecondFragment" />
-        <argument
-            android:name="dataInfo"
-            app:argType="integer" />
+
 
     </fragment>
     <fragment
@@ -31,6 +29,8 @@
 
         <argument
             android:name="dataInfo"
-            app:argType="integer"/>
+            app:argType="integer"
+            android:defaultValue="0"
+            />
     </fragment>
 </navigation>

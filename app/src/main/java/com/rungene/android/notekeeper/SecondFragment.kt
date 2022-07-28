@@ -42,9 +42,10 @@ class SecondFragment : Fragment() {
         _binding = FragmentSecondBinding.inflate(inflater, container, false)
 
         if(args.dataInfo >0) {
-            currentNoteId = args.dataInfo
+            currentNoteId = args.dataInfo-1
+            noteInfo = currentNote
         }
-        noteInfo = currentNote
+
         setHasOptionsMenu(true)
         return binding.root
 
@@ -53,7 +54,19 @@ class SecondFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        displayNote()
+        if (args.dataInfo>0){
+            displayNote()
+        }
+
+        val adapterCourses = context?.let {
+            ArrayAdapter<CourseInfo>(
+                it,
+                R.layout.simple_spinner_dropdown_item,
+                courses
+            )
+        }
+        binding.spinnerCourses.adapter =adapterCourses
+        binding.spinnerCourses.setSelection(0)
 
     }
 

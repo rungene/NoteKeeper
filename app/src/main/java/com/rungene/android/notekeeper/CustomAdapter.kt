@@ -21,7 +21,7 @@ class CustomAdapter(private val dataSet: List<NoteInfo>) :
         val tvCourse: TextView
         val tvTitle: TextView
         val tvText: TextView
-        val id : Int =0
+        var id : Int =0
         init {
             // Define click listener for the ViewHolder's View.
             tvCourse = view.findViewById(R.id.tvCourse)
@@ -54,6 +54,7 @@ class CustomAdapter(private val dataSet: List<NoteInfo>) :
         viewHolder.tvTitle.text = dataSet[position].title
         viewHolder.tvText.text = dataSet[position].text
         viewHolder.tvCourse.text = dataSet[position].courseTitle.toString()
+        viewHolder.id = position+1
         viewHolder.noteInfo=dataSet[position]
     }
 

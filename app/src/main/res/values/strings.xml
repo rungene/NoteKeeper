@@ -13,5 +13,10 @@
     <string name="note_title">Add Title</string>
     <string name="note_text">Add note text</string>
     <string name="fab_content_description">Add Notes</string>
+    <string name="menu_notes">Notes</string>
+    <string name="menu_courses">Courses</string>
+    <string name="menu_communicate">Communicate</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
 
 </resources>

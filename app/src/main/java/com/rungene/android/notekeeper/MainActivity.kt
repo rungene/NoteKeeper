@@ -9,26 +9,34 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
-import com.rungene.android.notekeeper.databinding.ActivityMainBinding
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.navigation.NavigationView
+import com.rungene.android.notekeeper.databinding.DrawerLayoutBinding
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
-    private lateinit var binding: ActivityMainBinding
-
+   // private lateinit var binding: ActivityMainBinding
+    private lateinit var bind: DrawerLayoutBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        bind = DrawerLayoutBinding.inflate(layoutInflater)
+        setContentView(bind.root)
 
-        setSupportActionBar(binding.toolbar)
+        setSupportActionBar(findViewById(R.id.toolbar))
+        val drawerLayout : DrawerLayout? = findViewById(R.id.drawer_layout)
 
         val navController = findNavController(R.id.nav_host_fragment_content_main)
-        appBarConfiguration = AppBarConfiguration(navController.graph)
+        appBarConfiguration = AppBarConfiguration(navController.graph,drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
+        findViewById<NavigationView>(R.id.nav_view)
+            .setupWithNavController(navController)
 
-        binding.fab.setOnClickListener {
+
+        findViewById<FloatingActionButton>(R.id.fab).setOnClickListener {
             navController.navigate(R.id.action_FirstFragment_to_SecondFragment,null)
         }
     }

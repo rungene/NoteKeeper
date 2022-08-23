@@ -9,6 +9,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.ui.setupWithNavController
@@ -16,11 +17,12 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.rungene.android.notekeeper.databinding.DrawerLayoutBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener{
 
     private lateinit var appBarConfiguration: AppBarConfiguration
    // private lateinit var binding: ActivityMainBinding
     private lateinit var bind: DrawerLayoutBinding
+   private lateinit var drawerLayout : DrawerLayout
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -28,18 +30,22 @@ class MainActivity : AppCompatActivity() {
         setContentView(bind.root)
 
         setSupportActionBar(findViewById(R.id.toolbar))
-        val drawerLayout : DrawerLayout? = findViewById(R.id.drawer_layout)
+       drawerLayout  = findViewById(R.id.drawer_layout)
+        val navView = findViewById<NavigationView>(R.id.nav_view)
+
 
         val navController = findNavController(R.id.nav_host_fragment_content_main)
-        appBarConfiguration = AppBarConfiguration(navController.graph,drawerLayout)
+        appBarConfiguration = AppBarConfiguration(navController.graph,
+            drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
-        findViewById<NavigationView>(R.id.nav_view)
-            .setupWithNavController(navController)
+
 
 
         findViewById<FloatingActionButton>(R.id.fab).setOnClickListener {
             navController.navigate(R.id.action_FirstFragment_to_SecondFragment,null)
         }
+        navView.setNavigationItemSelectedListener(this)
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -72,4 +78,30 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration)
                 || super.onSupportNavigateUp()
     }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        // Handle navigation view item clicks here.
+        when (item.itemId) {
+            R.id.nav_notes -> {
+            handleSelection("Notes")
+            }
+            R.id.nav_courses -> {
+                handleSelection("Courses")
+            }
+            R.id.nav_share -> {
+                handleSelection("Don't you think you've shared enough")
+            }
+            R.id.nav_send -> {
+                handleSelection("Send")
+            }
+        }
+
+        drawerLayout.closeDrawer(GravityCompat.START)
+        return true
+    }
+
+    private fun handleSelection(message: String) {
+        Toast.makeText(this,message,Toast.LENGTH_SHORT).show()
+    }
+
 }
